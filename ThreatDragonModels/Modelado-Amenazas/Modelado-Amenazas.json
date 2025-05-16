@@ -1,0 +1,20 @@
+{
+  "version": "2.4.1",
+  "summary": {
+    "title": "Modelado-Amenazas",
+    "owner": "Guillermo Humberto Vera Amaro",
+    "description": "El presente modelo de amenazas corresponde al sitio web de la biblioteca universitaria. Este sistema permite a estudiantes, personal universitario y bibliotecarios realizar funciones como iniciar sesión, buscar libros, y gestionar usuarios. El modelado identifica amenazas potenciales bajo la metodología STRIDE, propone mitigaciones y genera un análisis de riesgo para proteger los activos del sistema.\n",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [
+      {
+        "name": "Edmundo Ramos"
+      }
+    ],
+    "diagrams": [],
+    "diagramTop": 0,
+    "reviewer": "Edmundo Ramos del Moral",
+    "threatTop": 0
+  }
+}
