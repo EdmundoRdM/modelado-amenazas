@@ -22,9 +22,19 @@
         "version": "2.4.1",
         "cells": [],
         "description": "Este diagrama muestra cómo fluyen los datos en el sistema principal del sitio web de la biblioteca universitaria, incluyendo los actores (usuarios, bibliotecarios), el sitio web como proceso central, la base de datos, y las comunicaciones de entrada y salida."
+      },
+      {
+        "id": 2,
+        "title": "DFD LogIn",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.4.1",
+        "cells": [],
+        "description": "Este diagrama muestra el como fluyen los datos en el sistema al momento de que un usuario de identifique al iniciar sesión."
       }
     ],
-    "diagramTop": 2,
+    "diagramTop": 3,
     "reviewer": "Edmundo Ramos del Moral",
     "threatTop": 0
   }
