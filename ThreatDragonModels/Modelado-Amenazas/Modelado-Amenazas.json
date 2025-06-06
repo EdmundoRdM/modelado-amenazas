@@ -1534,6 +1534,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 1,
             "ports": {
               "groups": {
                 "top": {
@@ -1617,7 +1618,6 @@
               ]
             },
             "id": "dc44144e-0b4d-40ff-836b-3240d3757673",
-            "zIndex": 1,
             "data": {
               "type": "tm.Actor",
               "name": "Usuarios",
@@ -1668,6 +1668,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 2,
             "ports": {
               "groups": {
                 "top": {
@@ -1751,7 +1752,6 @@
               ]
             },
             "id": "2f0a8b4a-efcc-4910-960d-60c6bae5d5d4",
-            "zIndex": 2,
             "data": {
               "type": "tm.Process",
               "name": "Controlador web",
@@ -1809,6 +1809,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 3,
             "ports": {
               "groups": {
                 "top": {
@@ -1892,7 +1893,6 @@
               ]
             },
             "id": "7447d538-3ff0-44fd-a58f-ff30fa26a05c",
-            "zIndex": 3,
             "data": {
               "type": "tm.Process",
               "name": "Proceso de login",
@@ -1955,6 +1955,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 4,
             "ports": {
               "groups": {
                 "top": {
@@ -2038,7 +2039,6 @@
               ]
             },
             "id": "c8a6ca89-f3df-495f-9257-ee428c4988f7",
-            "zIndex": 4,
             "data": {
               "type": "tm.Store",
               "name": "Páginas web en disco",
@@ -2100,6 +2100,7 @@
             },
             "visible": true,
             "shape": "store",
+            "zIndex": 5,
             "ports": {
               "groups": {
                 "top": {
@@ -2183,7 +2184,6 @@
               ]
             },
             "id": "a6365c33-5c0b-4733-a673-fae30812077b",
-            "zIndex": 5,
             "data": {
               "type": "tm.Store",
               "name": "Base de datos",
@@ -2236,7 +2236,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -2256,12 +2257,31 @@
               "description": "Peticiones de inicio de sesión enviadas por los usuarios.",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "949c7ef0-9539-44d6-b51f-30f8ae522f13",
+                  "title": "Intercepción de credenciales",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure / Brecha de información",
+                  "description": "Si se usa HTTP en lugar de https las credenciales pueden ser capturadas.",
+                  "mitigation": "Forzar HTTPS, usar certificados válidos, bloquear HTTP.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 28,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Web Request"
@@ -2286,7 +2306,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -2306,12 +2327,31 @@
               "description": "Mensajes de error, confirmación de login o redirección.",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "6723819f-7097-48cb-8071-c2dbd6468512",
+                  "title": "Mensajes de error reveladores",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure / Brecha de información",
+                  "description": "Mensajes pueden exponer si un usuario existe o dar pistas.",
+                  "mitigation": "Mensajes genéricos, no revelar detalles del error.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 29,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Web Response"
@@ -2336,7 +2376,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -2356,12 +2397,31 @@
               "description": "Transferencia de credenciales para autenticación.",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "3bcb7421-3487-4316-a6c5-430167924a27",
+                  "title": "Inyección de Código",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering / Manipulación",
+                  "description": "Si no se validan bien las entradas, puede inyectarse código en el login.",
+                  "mitigation": "Validación de entrada, filtrado y codificación.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 30,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "UsuarioAutenticado()"
@@ -2386,7 +2446,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -2406,12 +2467,31 @@
               "description": "Consulta de validación de usuario y contraseña.",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "f78cc11f-6b78-4e4c-836a-777050b0906d",
+                  "title": "Intercepción o inyección SQL",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering / Manipulación",
+                  "description": "Un atacante puede manipular la consulta para acceder a datos.",
+                  "mitigation": "Usar red privada, consultas preparadas, validación estricta.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 31,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "UsuarioAutenticado_Query"
@@ -2436,7 +2516,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -2456,12 +2537,31 @@
               "description": "Resultado de la autenticación (válido/no válido).",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "a3586627-d2cb-4004-b0f4-09edc619841b",
+                  "title": "Exposición de información sensible",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure / Brecha de información",
+                  "description": "El resultado podría contener datos sensibles si no se controla.",
+                  "mitigation": "Solo retornar lo necesario, red privada, cifrado.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 32,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "UsuarioAutenticado_Query\nResultado "
@@ -2486,7 +2586,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -2506,12 +2607,31 @@
               "description": "Resultado final del login (éxito o error).",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "9f17f746-0b39-45b6-a68f-0956304dcc12",
+                  "title": "Confirmación de éxito/fallo accesible a atacante",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure / Brecha de información",
+                  "description": "Saber si un login fue exitoso ayuda a validar usuarios válidos.",
+                  "mitigation": "Tiempo de respuesta constante, mensajes genéricos.\t",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 33,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "UsuarioAutenticado\nResultado"
@@ -2536,7 +2656,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -2556,12 +2677,31 @@
               "description": "Lectura de contenido visual para mostrar al usuario.",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "c6d80f65-18c7-445b-9617-2b61db86db6b",
+                  "title": "Alteración de interfaz o inyección de scripts",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering / Manipulación",
+                  "description": "Un atacante puede modificar los archivos de interfaz.",
+                  "mitigation": "Solo lectura, acceso restringido, control de integridad.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 34,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Vistas"
@@ -2583,6 +2723,6 @@
     ],
     "diagramTop": 3,
     "reviewer": "Edmundo Ramos del Moral",
-    "threatTop": 27
+    "threatTop": 34
   }
 }
